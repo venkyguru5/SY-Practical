@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int key, a[10], i, n, count = 0;
+    int firstpos = -1;
+    int lastpos = -1;
+
+    // Input array size
+    cout << "Enter the size of the array (1-10): ";
+    cin >> n;
+
+    // Validate array size
+    if (n < 1 || n > 10) {
+        cout << "Array size must be between 1 and 10." << endl;
+        return 1; // Exit with an error code
+    }
+
+    // Input array elements
+    for (i = 0; i < n; i++) {
+        cout << "Enter element " << i + 1 << ": ";
+        cin >> a[i];
+    }
+
+    // Input key element
+    cout << "Enter the key element: ";
+    cin >> key;
+
+    // Find the occurrences of the key
+    for (i = 0; i < n; i++) {
+        if (a[i] == key) {
+            count++;
+            if (firstpos == -1) {
+                firstpos = i; // First occurrence
+            }
+            lastpos = i; // Last occurrence (updated every time key is found)
+        }
+    }
+
+    // Output results
+    if (count > 0) {
+        cout << "The element " << key << " appears " << count << " times." << endl;
+        cout << "First occurrence is at position " << firstpos << endl;
+        cout << "Last occurrence is at position " << lastpos << endl;
+    } else {
+        cout << "The target element was not found in the array." << endl;
+    }
+
+    return 0;
+}
