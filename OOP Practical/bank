@@ -1,56 +1,111 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-
-class bank{
+class Bank
+{
   private:
-  float total_amount, deposit_amount,withdrawl_amount;
-  int account_no;
-  public:
-  string name;
-  
-  void accept(){
-      cout<<"Enter the bank holder name: ";
-      cin>>name;
-      cout<<"Enter the bank account no.: ";
-      cin>>account_no;
-      cout<<"Enter the bank balance amount: ";
-      cin>>total_balance;
-      
-  }
-  void deposit(){
-     cout<<"Enter the amount to deposit: ";
-     cin>>deposit_amount;
-     total_amount+=deposit_amount;
-     cout<<"The amount "<<deposit_amount<<" has been deposited successfully ";
-     cout<<"total balance: "<<total_balance;
-  }
-  
-  void withdrawlt(){
-     cout<<"Enter the amount to withdrawl: ";
-     cin>>withdrawl_amount;
-     if(withdrawl_amount<=total_amount){
-     total_amount-=withdrawl_amount;
-     cout<<"The amount "<<withdrawl_amount<<" has been withdrawled successfully ";
-     cout<<"total balance: "<<total_balance;
-  }
-  else{
-   cout<<"INSUFFICIENT BALANCE!!! ";
-  }
- }
- void display(){
-    cout<<"Name\taccount no\ntotal balance ";
-    for(int i=0;i<n;i++){
-      cout<<name<<"\t"<<account_no<<"\t"<<total_balance;
-      }
- }
-};
+    float totalAmount, depositeAmount, withdrwalAmount;
 
-int main(){
-    bank b;
-    int a[10],i,n,ch,choice,flag=0,pos;
-    cout<<"Enter the total number of bank accounts: ";
-    cin>>n;
-    cout<<"MENU:\n1.Insert Data\n2.deposit amount\n3.withdrawl amount\n4.Display: \nEnter your choice: "
-    cin>>ch;
-    switch(ch){
-    
+  public:
+    int account_no;
+
+    string name;
+
+    void accpet()
+    {
+        cout << "Enter name: ";
+        cin >> name;
+        cout << "Enter account: ";
+        cin >> account_no;
+        cout << "Enter total_amount: ";
+        cin >> totalAmount;
+    }
+    void deposite()
+    {
+        cout << "Enter deopsit amount: ";
+        cin >> depositeAmount;
+        totalAmount += depositeAmount;
+        cout << depositeAmount << " Deposited sucessfully\n";
+        cout << totalAmount;
+    }
+    void withdrwal()
+    {
+        cout << "Enter withdrwal amount: ";
+        cin >> withdrwalAmount;
+        if (withdrwalAmount <= totalAmount)
+        {
+            totalAmount -= withdrwalAmount;
+            cout << withdrwalAmount << " withdrwaled sucessfully\n";
+            cout << totalAmount;
+        }
+        else
+        {
+            cout << "not engough amount ";
+        }
+    }
+    void display()
+    {
+        cout << name << "\t" << account_no << "\t" << totalAmount << "\n";
+    }
+};
+int main()
+{
+    Bank b[10];
+    int n, i, pos, flag = 0, ch, CH;
+    cout << "Enter bank account :-";
+    cin >> n;
+    do
+    {
+        cout << "Menu\n1)Insert\n2)Deposit\n3)Withdrwal\n4)Display\nEnter the choice :-";
+        cin >> ch;
+        switch (ch)
+        {
+        case 1:
+            for (i = 0; i < n; i++)
+                b[i].accpet();
+            break;
+        case 2:
+        {
+            cout << "Enter the account number: ";
+            cin >> pos;
+
+            for (i = 0; i < n; i++)
+            {
+                if (pos == b[i].account_no)
+                {
+                    b[i].deposite();
+                    flag = 1;
+                    break;
+                }
+            }
+        }
+            flag = 0;
+            break;
+        case 3:
+        {
+            cout << "Enter the account number: ";
+            cin >> pos;
+
+            for (i = 0; i < n; i++)
+            {
+                if (pos == b[i].account_no)
+                {
+                    b[i].withdrwal();
+                    flag = 1;
+                    break;
+                }
+            }
+        }
+            flag = 0;
+            break;
+        case 4:
+            cout << "Name\tAccount\tTotal\n";
+            for (i = 0; i < n; i++)
+            {
+                b[i].display();
+            }
+        };
+        cout << "\nIf you continue (1/0) :-";
+        cin >> CH;
+    } while (CH == 1);
+    return 0;
+}
