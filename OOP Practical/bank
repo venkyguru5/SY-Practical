@@ -1,0 +1,56 @@
+#include<iostream>
+using namespace std;
+
+class bank{
+  private:
+  float total_amount, deposit_amount,withdrawl_amount;
+  int account_no;
+  public:
+  string name;
+  
+  void accept(){
+      cout<<"Enter the bank holder name: ";
+      cin>>name;
+      cout<<"Enter the bank account no.: ";
+      cin>>account_no;
+      cout<<"Enter the bank balance amount: ";
+      cin>>total_balance;
+      
+  }
+  void deposit(){
+     cout<<"Enter the amount to deposit: ";
+     cin>>deposit_amount;
+     total_amount+=deposit_amount;
+     cout<<"The amount "<<deposit_amount<<" has been deposited successfully ";
+     cout<<"total balance: "<<total_balance;
+  }
+  
+  void withdrawlt(){
+     cout<<"Enter the amount to withdrawl: ";
+     cin>>withdrawl_amount;
+     if(withdrawl_amount<=total_amount){
+     total_amount-=withdrawl_amount;
+     cout<<"The amount "<<withdrawl_amount<<" has been withdrawled successfully ";
+     cout<<"total balance: "<<total_balance;
+  }
+  else{
+   cout<<"INSUFFICIENT BALANCE!!! ";
+  }
+ }
+ void display(){
+    cout<<"Name\taccount no\ntotal balance ";
+    for(int i=0;i<n;i++){
+      cout<<name<<"\t"<<account_no<<"\t"<<total_balance;
+      }
+ }
+};
+
+int main(){
+    bank b;
+    int a[10],i,n,ch,choice,flag=0,pos;
+    cout<<"Enter the total number of bank accounts: ";
+    cin>>n;
+    cout<<"MENU:\n1.Insert Data\n2.deposit amount\n3.withdrawl amount\n4.Display: \nEnter your choice: "
+    cin>>ch;
+    switch(ch){
+    
