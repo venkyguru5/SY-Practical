@@ -14,9 +14,9 @@ class Bank
     {
         cout << "Enter name: ";
         cin >> name;
-        cout << "Enter account: ";
+        cout << "Enter account no. : ";
         cin >> account_no;
-        cout << "Enter total_amount: ";
+        cout << "Enter total bank balance : ";
         cin >> totalAmount;
     }
     void deposite()
@@ -25,7 +25,7 @@ class Bank
         cin >> depositeAmount;
         totalAmount += depositeAmount;
         cout << depositeAmount << " Deposited sucessfully\n";
-        cout << totalAmount;
+        cout <<" total bank balance is "<< totalAmount;
     }
     void withdrwal()
     {
@@ -35,11 +35,11 @@ class Bank
         {
             totalAmount -= withdrwalAmount;
             cout << withdrwalAmount << " withdrwaled sucessfully\n";
-            cout << totalAmount;
+            cout <<" total bank balance is "<< totalAmount;
         }
         else
         {
-            cout << "not engough amount ";
+            cout << "INSUFFICIENT BANK BALANCE!!! JAao kuch paisa dalwaao!!!!! ";
         }
     }
     void display()
@@ -51,11 +51,11 @@ int main()
 {
     Bank b[10];
     int n, i, pos, flag = 0, ch, CH;
-    cout << "Enter bank account :-";
+    cout << "Enter the numbers of bank accounts: ";
     cin >> n;
     do
     {
-        cout << "Menu\n1)Insert\n2)Deposit\n3)Withdrwal\n4)Display\nEnter the choice :-";
+        cout << "Menu\n1)Insert\n2)Deposit\n3)Withdrawl\n4)Display\nEnter the choice :-";
         cin >> ch;
         switch (ch)
         {
@@ -98,13 +98,13 @@ int main()
             flag = 0;
             break;
         case 4:
-            cout << "Name\tAccount\tTotal\n";
+            cout << "Name\tAccNo. \tTotalBalance\n";
             for (i = 0; i < n; i++)
             {
                 b[i].display();
             }
         };
-        cout << "\nIf you continue (1/0) :-";
+        cout << "\nIf you continue then press 1 and if you want to stop press 0: ";
         cin >> CH;
     } while (CH == 1);
     return 0;
