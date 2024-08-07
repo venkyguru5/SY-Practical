@@ -1,47 +1,110 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-class book{
-    public:
-    char name;
-    int n[10];
+class book
+{
+public:
+    string name;
+
     int cost;
-    int counter;
-    void initcount(void) {counter = 0;}
+
     void accept(void);
     void display(void);
+    void price(void);
 };
-void book :: accept(void){
-   {
-       cout<<"Enter the total no. of books you want to buy: "<<endl;
-       cin>>n[counter];
-       cout<<"Enter the book name: "<<counter+1<<endl;
-       cin>>name;
-       cout<<"Enter the cost of book: "<<endl;
-       cin>>cost;
-       counter++;
-       }
+void book ::accept(void)
+{
+    {
+
+        cout << "Enter the book name: " << endl;
+        cin >> name;
+        cout << "Enter the cost of book: " << endl;
+        cin >> cost;
+    }
 }
-void book :: display(void){
-       for(int i=0;i<counter;i++){
-       cout<<"The Name of the book is "<<name<<" of cost "<<cost<<"Rs"<<counter+1<<endl;
-       counter++;
+void book ::display(void)
+{
+
+    cout << "The Name of the book is " << name << " of cost " << cost << "Rs" << endl;
 }
+void book ::price(void){
+    cout<<name<<"\t"<<cost<<endl;
 }
-int main(){
-    book b;
-    b.initcount();
-    b.accept();
-    b.display();
-    
+int main()
+{
+    book b[10];
+    int n, i, j, ch;
+    cout << "Enter the number of books you want to insert: ";
+    cin >> n;
+    do
+    {
+        cout << "MENU\n1. insert\n2. display\n3. sorted books\n4.remove duplicate\n5. books below 500\n6. Exit\n ENTER YOUR CHOICE:  ";
+        cin >> ch;
+        switch (ch)
+        {
+        case 1:
+            for (i = 0; i < n; i++)
+            {
+                b[i].accept();
+            }
+            break;
+        case 2:
+
+            for (int i = 0; i < n; i++)
+            {
+                b[i].display();
+            }
+            break;
+        case 3:
+            for (i = 0; i < n - 1; i++)
+            {
+
+                for (j = 0; j < n-i-1; j++)
+                {
+                    if (b[j].cost < b[j + 1].cost)
+                    {
+                        book temp;
+                        temp = b[j + 1];
+                        b[j + 1] = b[j];
+                        b[j] = temp;
+                    }
+                }
+            }
+            for (int i = 0; i < n; i++)
+            {
+                b[i].display();
+            }
+            break;
+
+        case 4:
+            i = 0;
+            for (j = 0; j < n; j++)
+            {
+                if (b[j].cost != b[i].cost)
+                {
+                    b[i + 1].cost = b[j].cost;
+                    i++;
+                }
+            }
+            for (int k = 0; k <= i; k++)
+            {
+                b[k].display();
+            }
+            break;
+        case 5:
+        cout<<"This books are below 500: "<<endl;
+        for(i=0;i<n;i++){
+            if (b[i].cost < 500){
+                b[i].price();
+               
+                
+            }
+        }
+            break;
+            
+               
+            
+        };
+    } while (ch != 6);
     return 0;
 }
 
-
-
-
-
-
-
-
-
-                                                                              
