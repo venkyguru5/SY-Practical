@@ -1,0 +1,47 @@
+#include<iostream>
+using namespace std;
+class book{
+    public:
+    char name;
+    int n[10];
+    int cost;
+    int counter;
+    void initcount(void) {counter = 0;}
+    void accept(void);
+    void display(void);
+};
+void book :: accept(void){
+   {
+       cout<<"Enter the total no. of books you want to buy: "<<endl;
+       cin>>n[counter];
+       cout<<"Enter the book name: "<<counter+1<<endl;
+       cin>>name;
+       cout<<"Enter the cost of book: "<<endl;
+       cin>>cost;
+       counter++;
+       }
+}
+void book :: display(void){
+       for(int i=0;i<counter;i++){
+       cout<<"The Name of the book is "<<name<<" of cost "<<cost<<"Rs"<<counter+1<<endl;
+       counter++;
+}
+}
+int main(){
+    book b;
+    b.initcount();
+    b.accept();
+    b.display();
+    
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+                                                                              
