@@ -31,13 +31,14 @@ void book ::price(void){
 }
 int main()
 {
-    book b[10];
+    book b[10],a[10];
+    
     int n, i, j, ch;
     cout << "Enter the number of books you want to insert: ";
     cin >> n;
     do
     {
-        cout << "MENU\n1. insert\n2. display\n3. sorted books\n4.remove duplicate\n5. books below 500\n6. Exit\n ENTER YOUR CHOICE:  ";
+        cout << "MENU\n1. insert\n2. display\n3. sorted books\n4. remove duplicate\n5. books below 500\n6. books above 500\n7. Exit\n ENTER YOUR CHOICE:  ";
         cin >> ch;
         switch (ch)
         {
@@ -87,24 +88,44 @@ int main()
             }
             for (int k = 0; k <= i; k++)
             {
-                b[k].display();
+                b[k].display(); 
             }
+            
+           
             break;
         case 5:
         cout<<"This books are below 500: "<<endl;
         for(i=0;i<n;i++){
             if (b[i].cost < 500){
                 b[i].price();
+                     
+                b[i].cost=a[i].cost;
+                b[i].name=a[i].name;
+                a[i].price();
+                
+               }
+                
+            }
+            break;
+        case 6:
+        cout<<"This books are above 500: "<<endl;
+        for(i=0;i<n;i++){
+            if (b[i].cost >= 500){
+                b[i].price();
                
                 
             }
         }
             break;
-            
+         case 7:
+         
+        
+        default:
+        cout<<"invalid choice! try again ";
+            break;
                
             
         };
-    } while (ch != 6);
+    } while (ch != 7);
     return 0;
 }
-
