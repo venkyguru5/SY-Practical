@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+class book
+{
+public:
+    string name, author, pub ;
+    string a
+
+    int cost, stock;
+    int n;
+
+    void accept(void);
+    void insert(void);
+    void display(void);
+    void price(void);
+    
+};
+void book ::insert(void)
+{
+    {
+
+        cout << "Enter the book name: " << endl;
+        cin >> name;
+        cout << "Enter the book's author name name: " << endl;
+        cin >> author;
+        cout << "Enter the book publication name: " << endl;
+        cin >> pub;
+        cout << "Enter the cost of book: " << endl;
+        cin >> cost;
+        cout << "Enter the book stock " << endl;
+        cin >> stock;
+    }
+}
+void book :: accept(void){
+       //cout<<"WELCOME OUR LOVELY CUSTOMER ";
+       cout<<"Enter the number of books you want to buy: ";
+       cin>>n;
+       if(n == stock){
+           
+       }
+}
