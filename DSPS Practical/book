@@ -132,6 +132,6 @@ int main()
                
             
         };
-    } while (ch != 81111);
+    } while (ch != 8);
     return 0;
 }
