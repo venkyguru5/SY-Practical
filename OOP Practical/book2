@@ -1,0 +1,91 @@
+#include <iostream>
+//#include<iomanship>
+#include<cstring>
+using namespace std;
+class book
+{
+public:
+    string name, author, pub ;
+    string a, b;
+
+    int cost, stock;
+    int n;
+
+    void accept(void);
+    void insert(void);
+    void display(void);
+    void price(void);
+    
+};
+void book ::insert(void)
+{
+    {
+
+        cout << "Enter the book name: " << endl;
+        cin >> name;
+        cout << "Enter the book's author name name: " << endl;
+        cin >> author;
+        cout << "Enter the book publication name: " << endl;
+        cin >> pub;
+        cout << "Enter the cost of book: " << endl;
+        cin >> cost;
+        cout << "Enter the book stock " << endl;
+        cin >> stock;
+    }
+}
+void book :: accept(void){
+       //cout<<"WELCOME OUR LOVELY CUSTOMER ";
+       
+       cout<<"Enter the number of books you want to buy: ";
+       cin>>n;
+       for(int i=0; i<n;i++){
+       cout<<"Enter the name of book: ";
+       cin>>a;
+       cout<<"Enter the author of book: ";
+       cin>>b;
+       if(a==name && b==author){
+          cout<<"The books are available";
+          if(n == stock){
+           cout<<"The stock is available "<<endl;
+           
+       }
+          }
+          
+       else{
+         cout<<"This books are not available in this store! ";
+         }
+       
+    }
+    
+}
+
+
+int main(){
+      book b[30];
+      int ch,N,total;
+      cout<<"WELCOME TO OUT LIBRARY!!";
+      do{
+      cout<<"MENU\n1. insert\2.accept\3.exit\nENTER YOUR CHOICE: ";
+      cin>>ch;
+      switch(ch)
+      {
+       case 1:
+       cout<<"enter the number of books you want to insert: ";
+       cin>>N;
+       for(int i=0;i<N<i++){
+         b.insert();
+       }
+       break;
+       
+       case 2:
+         b.accept();
+         total = n*b.[cost];
+         cout<<"Your total price is "<<total<<endl;
+         break;
+       
+       }while(ch!=3);
+       
+       return 0;
+       }
+         
+}
