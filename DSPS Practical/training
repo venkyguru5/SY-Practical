@@ -1,0 +1,211 @@
+#include<iostream>
+#include <iomanip>
+using namespace std;
+class Student
+{
+public:
+   string name;
+   int roll_no;
+    string Class;
+    string opi;
+ 
+  void getData()
+   {
+ 
+     
+    cout<<"Enter rool_no of student:-";
+    cin>>roll_no;
+    cout<<"Enter name of student:-";
+     cin>>name;
+    cout<<"Enter class of student:-";
+     cin>>Class;
+ 
+   }
+   
+ void display()
+   {
+   
+     cout   << setw(10)<< left <<roll_no
+                 << setw(15)<< left <<name
+                 << setw(10)<< left <<Class<<endl;
+   }
+    void display1()
+   {
+   
+     cout   << setw(10)<< left <<roll_no
+                 << setw(15)<< left <<name
+                 << setw(10)<< left <<Class
+                  << setw(10)<< left <<opi<<endl;
+   }
+};
+
+int main()
+ {
+    Student s[10];
+    int i,key,j,n,ch,count=0;
+    string tempclass;
+   
+    do{
+        cout<<"\nMENU\n1)ACCEPT\n2)DISPLAY\n3)Search (Linear Search)\n4)Search attend program(Binary Search)\n5)FeedBack\n6)Display feedback\n7)EXIT\nEnter your choice :- ";
+        cin>>ch;
+        switch(ch)
+        {
+         case 1:
+               {
+           cout<<"HOW MANY Student are Attend the program :";
+           cin>>n;
+               for(i=count;i<n+count;i++){
+               cout<<"\nEnter the "<<i+1<<"(th) Student Details:-\n";
+                 s[i].getData();
+                 
+               }
+               count+=n;
+               }
+          break;
+          case 2:
+                  {
+                   cout << setw(10)<< left <<"Roll"
+                 << setw(15)<< left <<"name"
+                 << setw(10)<< left <<"Class"<<endl;
+                 
+          cout<<setfill('_')<<setw(35)<<""<<setfill(' ')<<endl;
+                 
+                 
+                 
+                   
+                   for(i=0;i<count;i++){
+                       s[i].display();
+             
+                     }
+                 }  
+                 break;        
+         case 3:
+            {
+            cout<<"Enter The Roll_no of Student:-";
+            cin>>key;
+             cout<<"Enter The Class of Student :-";
+            cin>>tempclass;
+            for(i=0;i<count;i++)
+            {
+                 if(key==s[i].roll_no && tempclass==s[i].Class)
+                {
+                   cout<<"\n\nSTUDENT ARE ATTEND PROGRAM\n\n";
+                   break;
+                 }
+               
+            }
+            if(i==n)
+            {
+            cout<<"\n\nSTUDENT ARE  NOT ATTEND PROGRAM\n\n:";
+            }
+            }
+            break;
+            case 4:
+            {
+                for(i=0;i<count-1;i++)
+               {
+                       for(j=0;j<count-i-1;j++)
+                    {
+                            if(s[j+1].roll_no>s[j].roll_no)
+                             {
+                             Student temp;
+                             temp=s[j+1];
+                             s[j+1]=s[j];
+                            s[j]=temp;
+                            }
+ 
+                     }
+                 
+                }
+                 cout<<"Enter The Roll_no of Student:-";
+            cin>>key;
+                 cout<<"Enter The Class of Student :-";
+            cin>>tempclass;
+                 
+                int low=0,high=n-1;
+                int mid=(high+low)/2;
+                while(low<=high)
+                {
+                   if(key==s[mid].roll_no && tempclass==s[mid].Class)
+                   {
+                    cout<<"\n\nSTUDENT ARE ATTEND PROGRAM\n\n";
+                    break;
+                  }
+                  else if(key<=s[mid].roll_no)
+                    {
+                    low=mid+1;
+                    }
+                  else
+                  {
+                  high=mid-1;
+                  }
+                  mid=(high+low)/2;
+               
+               
+                }
+                if(low>high)
+                {
+                cout<<"\nSTUDENT ARE  NOT ATTEND PROGRAM\n";
+                }
+               
+            }
+            break;
+            case 5:
+           
+            {
+               int q1,q2,q3,q4,total=0,opi,ac;
+             
+             
+               for(int i=0;i<count;i++){
+               cout<<"Student "<<i+1<<"Opinion";
+               cout<<"Did you understand the purose of this traning program?\n1.YES\t2.No\n";
+               cin>>q1;
+               cout<<"This traning program is worth it?\n1.YES\t2.No\n";
+               cin>>q2;
+               cout<<"Do you feel you were give enough time for this traning origram?\n1.YES\t2.No\n";
+               cin>>q3;
+               cout<<"Overall how would you rate this program?\n1.Excellent\t2.Not Bad\n";
+               cin>>q4;
+               s[i].opi=q1+q2+q3+q4;
+             //  total+=opi;
+              // ac=((total)*100)/4;
+            }
+              // if(ac>=80)
+              // {
+              // cout<<"\nStudent are intreset to such type of traning program:\n";
+             //  }
+            //   else
+              // {
+            //   cout<<"\nStudent are not intreset to  program: \n";
+              // }
+            }
+            break;
+            case 6:
+            {
+            {
+                   cout << setw(10)<< left <<"Roll"
+                 << setw(15)<< left <<"name"
+                 << setw(10)<< left <<"Class"
+                  << setw(10)<< left <<"Opinion"<<endl;
+                 
+          cout<<setfill('_')<<setw(45)<<""<<setfill(' ')<<endl;
+                 
+                 
+                 
+                   
+                   for(i=0;i<count;i++){
+                       s[i].display();
+             
+                     }
+                 }  
+            }
+           
+        };
+       
+       
+      }while(ch!=7);
+   
+
+
+return 0;
+}
