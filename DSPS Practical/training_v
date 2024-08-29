@@ -1,0 +1,168 @@
+#include <iostream>
+#include<iomanip>
+using namespace std;
+class training{
+    public:
+    int rollno;
+    string s,name,opi;
+    
+    void data(void){
+    cout<<"Enter the student name: ";
+    cin>>name;
+    cout<<"Enter the studet roll no: ";
+    cin>>rollno;
+    cout<<"Enter the student class: ";
+    cin>>s;
+    
+    }
+    void display(){
+       cout<<s<<"\t"<<rollno<<endl;
+    }
+    
+    void display1()
+   {
+   
+     cout   << setw(10)<< left <<rollno
+                 << setw(15)<< left <<name
+                 << setw(10)<< left <<s
+                  << setw(10)<< left <<opi<<endl;
+   }
+    
+  
+};
+int main(){
+   training b[20];
+   int i,j,ch,A, tempr, flag=0, count=0;
+   string tempc;
+   cout<<"Enter the no. of students you want to insert: ";
+   cin>>A;
+   do{
+      cout<<"MENU\n1. insert\n2. display\n3. search(linear)\n4. search(binary)\n5. Feedback\n6. display Feedback\n7. exit\nENTER YOUR CHOICE: ";
+      cin>>ch;
+      switch(ch){
+       case 1:
+        for(int i=0;i<A;i++){
+          b[i].data();
+       }
+       break;
+       
+       case 2:
+       cout<<"class"<<"\t"<<"rollno"<<endl;
+         for(int i=0; i<A; i++){
+          b[i].display();
+      }
+      break;
+      case 3:
+      
+       cout<<"Enter the roll no. ";
+       cin>>tempr;
+       cout<<"Enter the class: ";
+       cin>>tempc;
+       for(i=0;i<A;i++){
+       if(b[i].rollno==tempr && b[i].s==tempc){
+           cout<<"The student has attended the training program...";
+           break;
+        }
+       }
+       
+        if(i==A){
+         cout<<"Student didn't attended the program..";
+        }
+        
+      
+      break;
+      case 4:
+      {
+      
+                for(i=0;i<count-1;i++)
+               {
+                       for(j=0;j<count-i-1;j++)
+                    {
+                            if(b[j+1].rollno>b[j].rollno)
+                             {
+                             training temp;
+                             temp=b[j+1];
+                             b[j+1]=b[j];
+                            b[j]=temp;
+                            }
+ 
+                     }
+                 
+                }
+                 cout<<"Enter The Roll no of Student:-";
+            cin>>tempr;
+                 cout<<"Enter The Class of Student :-";
+            cin>>tempc;
+                 
+                int low=0,high=A-1;
+                int mid=(high+low)/2;
+                while(low<=high)
+                {
+                   if(tempr==b[mid].rollno && tempc==b[mid].s)
+                   {
+                    cout<<"\n\nThe student has attended the training program...\n\n";
+                    break;
+                  }
+                  else if(tempr<=b[mid].rollno)
+                    {
+                    low=mid+1;
+                    }
+                  else
+                  {
+                  high=mid-1;
+                  }
+                  mid=(high+low)/2;
+               
+               
+                }
+                if(low>high)
+                {
+                cout<<"\nStudent didn't attended the program..\n";
+                }
+               
+            }
+            break;
+       case 5:
+          {
+               int q1,q2,q3,q4,total=0,opi,ac;
+             
+             
+               for(int i=0;i<count;i++){
+               cout<<"Student "<<i+1<<"Opinion";
+               cout<<"Did you understand the purose of this traning program?\n1.YES\t2.No\n";
+               cin>>q1;
+               cout<<"This traning program is worth it?\n1.YES\t2.No\n";
+               cin>>q2;
+               cout<<"Do you feel you were give enough time for this traning origram?\n1.YES\t2.No\n";
+               cin>>q3;
+               cout<<"Overall how would you rate this program?\n1.Excellent\t2.Not Bad\n";
+               cin>>q4;
+               b[i].opi=q1+q2+q3+q4;
+               }
+               break;
+               
+         case 6:
+            {
+            {
+                   cout << setw(10)<< left <<"Roll"
+                 << setw(15)<< left <<"name"
+                 << setw(10)<< left <<"Class"
+                  << setw(10)<< left <<"Opinion"<<endl;
+                 
+          cout<<setfill('_')<<setw(45)<<""<<setfill(' ')<<endl;
+                 
+                 
+                 
+                   
+                   for(i=0;i<count;i++){
+                       b[i].display();
+             
+                     }
+                 }  
+            }
+      }
+    }
+    
+  }while(ch!=7);
+  return 0;
+}
