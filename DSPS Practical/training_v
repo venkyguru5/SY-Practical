@@ -22,7 +22,7 @@ class training{
     void display1()
    {
    
-     cout   << setw(10)<< left <<rollno
+     cout<< setw(10)<< left <<rollno
                  << setw(15)<< left <<name
                  << setw(10)<< left <<s
                   << setw(10)<< left <<opi<<endl;
@@ -33,6 +33,7 @@ class training{
 int main(){
    training b[20];
    int i,j,ch,A, tempr, flag=0, count=0;
+    //int total = 0;
    string tempc;
    cout<<"Enter the no. of students you want to insert: ";
    cin>>A;
@@ -124,11 +125,11 @@ int main(){
             break;
        case 5:
           {
-               int q1,q2,q3,q4,total=0,opi,ac;
+               int q1,q2,q3,q4,opi,ac;
+              
              
-             
-               for(int i=0;i<count;i++){
-               cout<<"Student "<<i+1<<"Opinion";
+               for(int i=0;i<A;i++){
+               cout<<"Student "<<i+1<<" Opinion"<<endl;
                cout<<"Did you understand the purose of this traning program?\n1.YES\t2.No\n";
                cin>>q1;
                cout<<"This traning program is worth it?\n1.YES\t2.No\n";
@@ -138,11 +139,11 @@ int main(){
                cout<<"Overall how would you rate this program?\n1.Excellent\t2.Not Bad\n";
                cin>>q4;
                b[i].opi=q1+q2+q3+q4;
+               //A++;
                }
                break;
                
          case 6:
-            {
             {
                    cout << setw(10)<< left <<"Roll"
                  << setw(15)<< left <<"name"
@@ -154,12 +155,12 @@ int main(){
                  
                  
                    
-                   for(i=0;i<count;i++){
+                   for(i=0;i<A;i++){
                        b[i].display();
              
                      }
                  }  
-            }
+            
       }
     }
     
