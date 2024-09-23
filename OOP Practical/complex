@@ -1,6 +1,5 @@
 #include<iostream>
 using namespace std;
-
 class complex;
 class calculator{
     public:
@@ -12,7 +11,7 @@ class calculator{
     }
     int sumRealComplex(complex, complex);   
     int sumCompComplex(complex, complex);
-    //int PRealComplex(complex, complex);   
+    int PRealComplex(complex, complex);   
     //(a+bi)(c+di) = (ac-bd)+(ad+bc)i
     int PCompComplex(complex, complex);  
 };
@@ -34,24 +33,21 @@ int calculator :: sumRealComplex(complex o1, complex o2){
     return (o1.a + o2.a);
 }
 int calculator :: PRealComplex(complex o1, complex o2){
-    return (((o1.a*o2.a)-(o1.b*o2.b));
+    return ((o1.a*o2.a)-(o1.b*o2.b));
 }
 int calculator :: sumCompComplex(complex o1, complex o2){
     return (o1.b + o2.b);
 }
 int calculator :: PCompComplex(complex o1, complex o2){
-    return ((o1.a*o2.b)+(o2.a*o1.b)));
+    return ((o1.a*o2.b)+(o2.a*o1.b));
     
 }
-
 int main(){
     complex o1, o2;
     o1.input();
     o1.display();
-
     o2.input();
     o2.display();
-
     calculator calc;
     int res = calc.sumRealComplex(o1, o2);
     //cout<<"The sum of real part is "<<res<<endl;
@@ -61,6 +57,5 @@ int main(){
     //cout<<"The product of real part is "<<PRes<<endl;
     int PResc = calc.PCompComplex(o1, o2);
     cout<<"The product of complex number is: "<<PRes<<" + "<<PResc<<"i"<<endl;
-
     return 0;
 }
