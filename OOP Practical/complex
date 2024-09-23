@@ -1,0 +1,66 @@
+#include<iostream>
+using namespace std;
+
+class complex;
+class calculator{
+    public:
+    int add(int a, int b){
+        return (a+b);
+    }
+    int multiply(int a, int b){
+        return(a*b);
+    }
+    int sumRealComplex(complex, complex);   
+    int sumCompComplex(complex, complex);
+    //int PRealComplex(complex, complex);   
+    //(a+bi)(c+di) = (ac-bd)+(ad+bc)i
+    int PCompComplex(complex, complex);  
+};
+class complex{
+      public:
+      int a;
+      int b;
+      void input(){
+         cout<<"enter the real part "<<endl;
+         cin>>a;
+         cout<<"enter the imaginary part "<<endl;
+         cin>>b;
+      }
+      void display(){
+        cout<<"your number is "<<a<<" + "<<b<<"i"<<endl;
+    }
+};
+int calculator :: sumRealComplex(complex o1, complex o2){
+    return (o1.a + o2.a);
+}
+int calculator :: PRealComplex(complex o1, complex o2){
+    return (((o1.a*o2.a)-(o1.b*o2.b));
+}
+int calculator :: sumCompComplex(complex o1, complex o2){
+    return (o1.b + o2.b);
+}
+int calculator :: PCompComplex(complex o1, complex o2){
+    return ((o1.a*o2.b)+(o2.a*o1.b)));
+    
+}
+
+int main(){
+    complex o1, o2;
+    o1.input();
+    o1.display();
+
+    o2.input();
+    o2.display();
+
+    calculator calc;
+    int res = calc.sumRealComplex(o1, o2);
+    //cout<<"The sum of real part is "<<res<<endl;
+    int resc = calc.sumCompComplex(o1, o2);
+    cout<<"The sum of complex number is: "<<res<<" + "<<resc<<"i"<<endl;
+    int PRes = calc.PRealComplex(o1, o2);
+    //cout<<"The product of real part is "<<PRes<<endl;
+    int PResc = calc.PCompComplex(o1, o2);
+    cout<<"The product of complex number is: "<<PRes<<" + "<<PResc<<"i"<<endl;
+
+    return 0;
+}
