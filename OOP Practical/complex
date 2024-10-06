@@ -1,20 +1,6 @@
+
 #include<iostream>
 using namespace std;
-class complex;
-class calculator{
-    public:
-    int add(int a, int b){
-        return (a+b);
-    }
-    int multiply(int a, int b){
-        return(a*b);
-    }
-    int sumRealComplex(complex, complex);   
-    int sumCompComplex(complex, complex);
-    int PRealComplex(complex, complex);   
-    //(a+bi)(c+di) = (ac-bd)+(ad+bc)i
-    int PCompComplex(complex, complex);  
-};
 class complex{
       public:
       int a;
@@ -28,19 +14,39 @@ class complex{
       void display(){
         cout<<"your number is "<<a<<" + "<<b<<"i"<<endl;
     }
+    int sumRealComplex(complex, complex);   
+    int sumCompComplex(complex, complex);
+    int PRealComplex(complex, complex);   
+    //(a+bi)(c+di) = (ac-bd)+(ad+bc)i
+    int PCompComplex(complex, complex); 
+    int DiffRealComplex(complex, complex);
+    int DiffCompComplex(complex, complex);
+    int DRealComplex(complex, complex);
+    int DCompComplex(complex, complex);
 };
-int calculator :: sumRealComplex(complex o1, complex o2){
+int complex :: sumRealComplex(complex o1, complex o2){
     return (o1.a + o2.a);
 }
-int calculator :: PRealComplex(complex o1, complex o2){
-    return ((o1.a*o2.a)-(o1.b*o2.b));
+int complex :: DiffRealComplex(complex o1, complex o2){
+    return (o1.a - o2.a);
+   }
+int complex :: PRealComplex(complex o1, complex o2){
+    return (o1.a*o2.a)-(o1.b*o2.b);
 }
-int calculator :: sumCompComplex(complex o1, complex o2){
+int complex :: DRealComplex(complex o1, complex o2){
+    return (o1.a*o2.a+o1.b*o2.b)/(o2.a*o2.a+o2.b*o2.b);
+}
+int complex :: sumCompComplex(complex o1, complex o2){
     return (o1.b + o2.b);
 }
-int calculator :: PCompComplex(complex o1, complex o2){
-    return ((o1.a*o2.b)+(o2.a*o1.b));
-    
+int complex :: DiffCompComplex(complex o1, complex o2){
+    return (o1.b - o2.b);
+}
+int complex :: PCompComplex(complex o1, complex o2){
+    return (o1.a*o2.b)+(o2.a*o1.b);
+}
+int complex :: DCompComplex(complex o1, complex o2){
+    return (o1.b*o2.a-o2.b*o1.a)/(o2.a*o2.a+o2.b*o2.b);
 }
 int main(){
     complex o1, o2;
@@ -48,7 +54,7 @@ int main(){
     o1.display();
     o2.input();
     o2.display();
-    calculator calc;
+    complex calc;
     int res = calc.sumRealComplex(o1, o2);
     //cout<<"The sum of real part is "<<res<<endl;
     int resc = calc.sumCompComplex(o1, o2);
@@ -57,5 +63,12 @@ int main(){
     //cout<<"The product of real part is "<<PRes<<endl;
     int PResc = calc.PCompComplex(o1, o2);
     cout<<"The product of complex number is: "<<PRes<<" + "<<PResc<<"i"<<endl;
+    int DRes = calc.DiffRealComplex(o1, o2);
+    int DResc = calc.DiffCompComplex(o1, o2);
+    cout<<"The difference of complex number is: "<<DRes<<" + "<<DResc<<"i"<<endl;
+    int dRes = calc.DRealComplex(o1, o2);
+    int dResc = calc.DCompComplex(o1, o2);
+    cout<<"The division of complex number is: "<<dRes<<" + "<<dResc<<"i"<<endl;
+    
     return 0;
 }
