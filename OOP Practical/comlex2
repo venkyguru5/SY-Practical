@@ -1,3 +1,4 @@
+
 #include<iostream>
 using namespace std;
 class complex{
@@ -19,8 +20,8 @@ class complex{
     //(a+bi)(c+di) = (ac-bd)+(ad+bc)i
     int PCompComplex(complex, complex); 
     int DiffRealComplex(complex, complex);
-    int DiffcompComplex(complex, complex);
-    int DRealcomplex(complex, complex);
+    int DiffCompComplex(complex, complex);
+    int DRealComplex(complex, complex);
     int DCompComplex(complex, complex);
 };
 int complex :: sumRealComplex(complex o1, complex o2){
