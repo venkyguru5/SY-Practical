@@ -1,0 +1,51 @@
+#include<iostream>
+using namespace std;
+class pizza{
+   public:
+   int price;
+   string type, size;
+   void accept(){
+       cout<<"Enter type of pizza: ";
+       cin>>type;
+       cout<<"Enter size of pizza: ";
+       cin>>size;
+       cout<<"Enter price of pizza: ";
+       cin>>price;
+   }
+   
+   void display(){
+       //cout<<"This is our MENU: "<<endl;
+       cout<<type<<"\t"<<size<<"\t"<<price<<endl;
+   }
+};
+
+int main(){
+   pizza p[50];
+   int i,j,ch;
+   cout<<"----------WELCOME TO PIZZA HOUSE----------"<<endl;
+   cout<<"Enter the number of pizza you want to insert: ";
+   cin>>n;
+   do{
+    cout<<"MENU:\n1. accept\n2. Display\n3. Orders\n4. Exit\nEnter your choice: "<<endl;
+    cin>>ch;
+    switch(ch){
+    case 1:
+    for(i=0;i<n;i++){
+       p[i].accept();
+    }
+    break;
+    
+    case 2:
+    cout<<"This is our MENU: "<<endl;
+    cout<<"Name"<<"\t"<<"size"<<"\t"<<"price"<<endl;
+    for(i=0;i<n;i++){
+        p[i].display();
+    }
+    break;
+    
+    case 3: 
+    cout<<""
+    
+    } 
+   } 
+}
