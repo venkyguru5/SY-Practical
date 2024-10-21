@@ -1,0 +1,40 @@
+#include<iostream>
+using namespace std;
+class person{
+   public:
+   string name, gender;
+   int id,age,contact;
+   void accept(){
+      cout<<"Enter the Name: ";
+      cin>>name;
+      cout<<"Enter the ID: ";
+      cin>>id;
+      cout<<"Enter the Age: ";
+      cin>>age;
+      cout<<"Enter the Gender: ";
+      cin>>gender;
+      cout<<"Enter the Contact no. : ";
+      cin>>contact;
+   }   
+};
+
+class doctor:public person{
+    public:
+    int exp, salary;
+    string skills, q;
+    void SetData(){
+      accept();
+      cout<<"Enter the Degree of Doctor : ";
+      cin>>q;
+      cout<<"Enter the Specialization: ";
+      cin>>skills;
+      cout<<"Enter the Doctor's Experience: ";
+      cin>>exp;
+      cout<<"Enter the Doctor's salary: ";
+      cin>>salary;
+    }
+    
+    void display(){
+        
+    }
+}
