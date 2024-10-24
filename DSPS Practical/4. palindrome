@@ -1,76 +1,69 @@
-#include<iostream>
-#include<cctype> //contains functions for lowering stringsand checking pnctuatio marks
-#include<cstring>
+#include <iostream>
+#include <cctype>
+#define MAX 50
 using namespace std;
-char stack[30];
+char stack[MAX];
 int top = -1, length;
-
-void push(char x){
-   if(top == 29){
-      cout<<"STACK OVERFLOW\n";
-    }else{
-       top++;
-       stack[top] = x;
+void push(char x)
+{
+    if (top == MAX - 1)
+    {
+        cout << "STACK OVERFLOW\n";
     }
+
+    stack[++top] = x;
 }
-
-char pop(){
-   if(top == -1){
-     cout<<"STACK UNDERFLOW\n";
-     return 0;
-   }else{
-      return stack[top--];
+char pop()
+{
+    if (top == -1)
+    {
+        cout << "STACK UNDERFLOW\n";
+        return '\0';
     }
+
+    return stack[top--];
 }
+bool isPalindrome(string str)
+{
+    string cleanStr = "";
+    for (char c : str)
+    {
+        if (isalnum(c))
+        {
+            cleanStr += tolower(c);
+        }
+    }
+    int n = cleanStr.length();
+    for (int i = 0; i < n; i++)
+    {
+        push(cleanStr[i]);
+    }
+    for (int i = 0; i < n; i++)
+    {
+        if (pop() != cleanStr[i])
+        {
+            return false;
+        }
+    }
+    return true;
+}
+int main()
+{
+    string str;
+    cout << "Enter a string: ";
+    getline(cin, str);
 
-int main(){
-    int i;
-    int count = 0;
-    char c[40];
-    char r[40];
-    
-    cout<<"Enter the statement: ";
-    cin.getline(c, 40);
+    if (isPalindrome(str))
+    {
+        cout << "\'" << str << "\'"
+             << " is a palindrome." << endl;
+    }
+    else
+    {
+        cout << "\'" << str << "\'"
+             << " is not a palindrome." << endl;
+    }
 
-    length = strlen(c);
-    cout<<length<<endl;
-    
-    for(i=0;i<length;i++){
-        c[i] = tolower(c[i]);
-        
-    }
-    
-    cout<<"Lower case string: "<<c;
-    
-    for(i = 0;i<length; i++){
-          if(c[i] == ' '||ispunct(c[i]))
-          {
-            
-          }else{
-             push(c[i]);
-             r[count] = c[i];
-             count++;
-          }
-    }
-    
-    r[count] = '\0'; //it will help to properly skip space and punctuation marks without 
-    cout<<"\nStack becomes: "<<stack;
-    cout<<"\nString becomes: "<<r<<endl;
-    
-    int flag = 1;
-    
-    for(i = 0; i<count; i++){
-     if(pop() == r[i]){}else{
-        flag = 0;
-        break;
-     }
-     
-    }
-    if(flag == 1){
-        cout<<"\nPalindrome "<<endl;
-    }else{
-      cout<<"Not a palindrome "<<endl;
-    }
-    
     return 0;
 }
+ 
