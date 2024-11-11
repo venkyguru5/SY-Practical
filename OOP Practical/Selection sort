@@ -1,0 +1,75 @@
+#include<iostream>
+using namespace std;
+template <typename T>
+
+void sort(T a[],int n)
+{
+  for(int i=0;i<n;i++)
+  {
+    for(int j=i+1;j<n;j++)
+    {
+     if(a[i]>a[j])
+     {
+      T temp=a[i];
+      a[i]=a[j];
+      a[j]=temp;
+     
+     }
+    }
+  }
+}
+int main()
+{
+  int ch;
+   int n;
+  while(true)
+  {
+   cout<<"Opreation\n1. Interger Sort\n2. Float Sort\n3. Exit...\n  Enter your desired choice:";
+   cin>>ch;
+   switch(ch)
+   {
+     case 1:
+         int a[10];
+       
+         cout<<"How many element enter it:";
+         cin>>n;
+         cout<<"Enter "<<n<<" array element:"<<endl;
+    for(int i=0;i<n;i++)
+    {
+     cin>>a[i];
+    }
+    sort(a,n);
+    cout<<"[";
+    for(int i=0;i<n;i++)
+    {
+    cout<<a[i]<<",";
+    }
+    cout<<"]";
+   
+    break;
+    case 2:
+          float b[10];
+         
+         cout<<"How many element enter it:";
+         cin>>n;
+         cout<<"Enter "<<n<<" array element:"<<endl;
+    for(int i=0;i<n;i++)
+    {
+     cin>>b[i];
+   
+    }
+    sort(b,n);
+    cout<<"[";
+    for(int i=0;i<n;i++)
+    {
+    cout<<b[i]<<",";
+    }
+    cout<<"]";
+    break;
+    case 3:
+      return 0;
+         
+   }
+}
+  return 0;
+}
