@@ -1,0 +1,199 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+struct Book {
+    string title;
+    string author;
+    string ISBN;
+    bool available; // True if available, False if checked out
+    Book* next;
+};
+
+Book* head = NULL;
+
+// Function to create a new node
+Book* get_node() {
+    Book* newBook = new Book;
+    if (newBook == NULL) {
+        cout << "Memory not allocated!" << endl;
+        return NULL;
+    }
+    newBook->next = NULL;
+    return newBook;
+}
+
+// Function to add a book at the head of the list
+void insert_at_head() {
+    Book* newBook = get_node();
+    if (!newBook) return;
+
+    cout << "Enter book title: ";
+    cin.ignore();
+    getline(cin, newBook->title);
+
+    cout << "Enter book author: ";
+    getline(cin, newBook->author);
+
+    cout << "Enter book ISBN: ";
+    getline(cin, newBook->ISBN);
+
+    newBook->available = true; // Default availability is true
+
+    newBook->next = head;
+    head = newBook;
+
+    cout << "Book inserted at head." << endl;
+}
+
+// Function to add a book at the end of the list
+void insert_at_end() {
+    Book* newBook = get_node();
+    if (newBook == NULL) return;
+
+    cout << "Enter book title: ";
+    cin.ignore();
+    getline(cin, newBook->title);
+
+    cout << "Enter book author: ";
+    getline(cin, newBook->author);
+
+    cout << "Enter book ISBN: ";
+    getline(cin, newBook->ISBN);
+
+    newBook->available = true;
+
+    if (head == NULL) {
+        head = newBook;
+    } else {
+        Book* temp = head;
+        while (temp->next != NULL) {
+            temp = temp->next;
+        }
+        temp->next = newBook;
+    }
+    cout << "Book added at the end." << endl;
+}
+
+// Function to search for a book by ISBN
+void search_by_ISBN() {
+    if (head == NULL) {
+        cout << "No books in the library." << endl;
+        return;
+    }
+
+    string isbn;
+    cout << "Enter the ISBN of the book to search: ";
+    cin >> isbn;
+
+    Book* temp = head;
+    while (temp != NULL) {
+        if (temp->ISBN == isbn) {
+            cout << "Book found:\n";
+            cout << "Title: " << temp->title << "\nAuthor: " << temp->author << "\nAvailable: " 
+                 << (temp->available ? "Yes" : "No") << endl;
+            return;
+        }
+        temp = temp->next;
+    }
+
+    cout << "Book with ISBN " << isbn << " not found." << endl;
+}
+
+// Function to display all books in the library
+void display_books() {
+    if (head == NULL) {
+        cout << "No books in the library." << endl;
+        return;
+    }
+
+    Book* temp = head;
+    while (temp != NULL) {
+        cout << "Title: " << temp->title << ", Author: " << temp->author 
+             << ", ISBN: " << temp->ISBN 
+             << ", Available: " << (temp->available ? "Yes" : "No") << endl;
+        temp = temp->next;
+    }
+}
+
+// Function to delete a book by ISBN
+void delete_by_ISBN() {
+    if (head == NULL) {
+        cout << "No books in the library." << endl;
+        return;
+    }
+
+    string isbn;
+    cout << "Enter the ISBN of the book to delete: ";
+    cin >> isbn;
+
+    Book* temp = head;
+    Book* prev = NULL;
+
+    // If the book to be deleted is the head
+    if (temp != NULL && temp->ISBN == isbn) {
+        head = temp->next;
+        delete temp;
+        cout << "Book deleted successfully." << endl;
+        return;
+    }
+
+    // Search for the book
+    while (temp != NULL && temp->ISBN != isbn) {
+        prev = temp;
+        temp = temp->next;
+    }
+
+    // If book not found
+    if (temp == NULL) {
+        cout << "Book with ISBN " << isbn << " not found." << endl;
+        return;
+    }
+
+    // Unlink the book from the list
+    prev->next = temp->next;
+    delete temp;
+    cout << "Book deleted successfully." << endl;
+}
+
+// Main function
+int main() {
+    int choice;
+
+    do {
+        cout << "\nLibrary Management Menu:\n";
+        cout << "1. Add book at head\n";
+        cout << "2. Add book at end\n";
+        cout << "3. Search book by ISBN\n";
+        cout << "4. Display all books\n";
+        cout << "5. Delete book by ISBN\n";
+        cout << "6. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                insert_at_head();
+                break;
+            case 2:
+                insert_at_end();
+                break;
+            case 3:
+                search_by_ISBN();
+                break;
+            case 4:
+                display_books();
+                break;
+            case 5:
+                delete_by_ISBN();
+                break;
+            case 6:
+                cout << "Exiting program." << endl;
+                break;
+            default:
+                cout << "Invalid choice. Please try again." << endl;
+        }
+    } while (choice != 6);
+
+    return 0;
+}
